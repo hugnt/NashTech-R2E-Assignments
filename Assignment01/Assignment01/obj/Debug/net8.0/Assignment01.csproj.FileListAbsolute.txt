@@ -1,0 +1,14 @@
+D:\Documents\NashTech\Mentoring\Assignment01\Assignment01\bin\Debug\net8.0\Assignment01.exe
+D:\Documents\NashTech\Mentoring\Assignment01\Assignment01\bin\Debug\net8.0\Assignment01.deps.json
+D:\Documents\NashTech\Mentoring\Assignment01\Assignment01\bin\Debug\net8.0\Assignment01.runtimeconfig.json
+D:\Documents\NashTech\Mentoring\Assignment01\Assignment01\bin\Debug\net8.0\Assignment01.dll
+D:\Documents\NashTech\Mentoring\Assignment01\Assignment01\bin\Debug\net8.0\Assignment01.pdb
+D:\Documents\NashTech\Mentoring\Assignment01\Assignment01\obj\Debug\net8.0\Assignment01.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\NashTech\Mentoring\Assignment01\Assignment01\obj\Debug\net8.0\Assignment01.AssemblyInfoInputs.cache
+D:\Documents\NashTech\Mentoring\Assignment01\Assignment01\obj\Debug\net8.0\Assignment01.AssemblyInfo.cs
+D:\Documents\NashTech\Mentoring\Assignment01\Assignment01\obj\Debug\net8.0\Assignment01.csproj.CoreCompileInputs.cache
+D:\Documents\NashTech\Mentoring\Assignment01\Assignment01\obj\Debug\net8.0\Assignment01.dll
+D:\Documents\NashTech\Mentoring\Assignment01\Assignment01\obj\Debug\net8.0\refint\Assignment01.dll
+D:\Documents\NashTech\Mentoring\Assignment01\Assignment01\obj\Debug\net8.0\Assignment01.pdb
+D:\Documents\NashTech\Mentoring\Assignment01\Assignment01\obj\Debug\net8.0\Assignment01.genruntimeconfig.cache
+D:\Documents\NashTech\Mentoring\Assignment01\Assignment01\obj\Debug\net8.0\ref\Assignment01.dll

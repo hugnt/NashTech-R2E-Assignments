@@ -1,0 +1,96 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Documents\\NashTech\\Mentoring\\Assignment01\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B505DCCE-6C31-47DF-86BD-EC9789452509}|Assignment01\\Assignment01.csproj|d:\\documents\\nashtech\\mentoring\\assignment01\\assignment01\\menumodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B505DCCE-6C31-47DF-86BD-EC9789452509}|Assignment01\\Assignment01.csproj|solutionrelative:assignment01\\menumodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B505DCCE-6C31-47DF-86BD-EC9789452509}|Assignment01\\Assignment01.csproj|d:\\documents\\nashtech\\mentoring\\assignment01\\assignment01\\carmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B505DCCE-6C31-47DF-86BD-EC9789452509}|Assignment01\\Assignment01.csproj|solutionrelative:assignment01\\carmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B505DCCE-6C31-47DF-86BD-EC9789452509}|Assignment01\\Assignment01.csproj|d:\\documents\\nashtech\\mentoring\\assignment01\\assignment01\\enumhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B505DCCE-6C31-47DF-86BD-EC9789452509}|Assignment01\\Assignment01.csproj|solutionrelative:assignment01\\enumhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B505DCCE-6C31-47DF-86BD-EC9789452509}|Assignment01\\Assignment01.csproj|d:\\documents\\nashtech\\mentoring\\assignment01\\assignment01\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B505DCCE-6C31-47DF-86BD-EC9789452509}|Assignment01\\Assignment01.csproj|solutionrelative:assignment01\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 2839,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MenuModel.cs",
+              "DocumentMoniker": "D:\\Documents\\NashTech\\Mentoring\\Assignment01\\Assignment01\\MenuModel.cs",
+              "RelativeDocumentMoniker": "Assignment01\\MenuModel.cs",
+              "ToolTip": "D:\\Documents\\NashTech\\Mentoring\\Assignment01\\Assignment01\\MenuModel.cs",
+              "RelativeToolTip": "Assignment01\\MenuModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T08:45:23.125Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EnumHelper.cs",
+              "DocumentMoniker": "D:\\Documents\\NashTech\\Mentoring\\Assignment01\\Assignment01\\EnumHelper.cs",
+              "RelativeDocumentMoniker": "Assignment01\\EnumHelper.cs",
+              "ToolTip": "D:\\Documents\\NashTech\\Mentoring\\Assignment01\\Assignment01\\EnumHelper.cs",
+              "RelativeToolTip": "Assignment01\\EnumHelper.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T08:47:08.37Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CarModel.cs",
+              "DocumentMoniker": "D:\\Documents\\NashTech\\Mentoring\\Assignment01\\Assignment01\\CarModel.cs",
+              "RelativeDocumentMoniker": "Assignment01\\CarModel.cs",
+              "ToolTip": "D:\\Documents\\NashTech\\Mentoring\\Assignment01\\Assignment01\\CarModel.cs",
+              "RelativeToolTip": "Assignment01\\CarModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T08:44:13.908Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Documents\\NashTech\\Mentoring\\Assignment01\\Assignment01\\Program.cs",
+              "RelativeDocumentMoniker": "Assignment01\\Program.cs",
+              "ToolTip": "D:\\Documents\\NashTech\\Mentoring\\Assignment01\\Assignment01\\Program.cs",
+              "RelativeToolTip": "Assignment01\\Program.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAxwBQAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T06:37:31.9Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
