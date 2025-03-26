@@ -6,38 +6,38 @@ using System.Threading.Tasks;
 
 namespace Assignment01;
 
-class CarModel
+class Car
 {
     public string Make { get; set; }
     public string Model { get; set; }
     public int Year { get; set; }
     public CarType Type { get; set; }
 
-    public void SetInfoByConsole()
+    public void GetInfoInput()
     {
         Console.WriteLine("Enter car type (Fuel/Electric):");
-        getCarTypeConsole();
+        getCarTypeInput();
         Console.WriteLine("Enter Make:");
-        getMakeConsole();
+        getMakeInput();
         Console.WriteLine("Enter Model:");
-        getModelConsole();
+        getModelInput();
         Console.WriteLine("Enter Year:");
-        getYearConsole();
+        getYearInput();
     }
-    private void getMakeConsole()
+    private void getMakeInput()
     {
         var isValidCast = true;
         do
         {
             var makeInput = Console.ReadLine();
             isValidCast = makeInput != null && makeInput.Trim() != "";
-            if (!isValidCast) Console.Write("Car name not valid!, Enter type again: \n");
+            if (!isValidCast) Console.Write("Car make not valid!, Enter type again: \n");
             else Make = makeInput;
         }
         while (!isValidCast);
     }
 
-    private void getModelConsole()
+    private void getModelInput()
     {
         var isValidCast = true;
         do
@@ -50,7 +50,7 @@ class CarModel
         while (!isValidCast);
     }
 
-    private void getCarTypeConsole()
+    private void getCarTypeInput()
     {
         var isValidCast = true;
         do
@@ -64,7 +64,7 @@ class CarModel
         while (!isValidCast);
     }
 
-    private void getYearConsole()
+    private void getYearInput()
     {
         var isValidCast = true;
         do

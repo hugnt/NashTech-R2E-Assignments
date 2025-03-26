@@ -10,7 +10,7 @@ namespace Assignment01
         {
             var menuStr = "Menu: \n1.Add a Car \n2.View All Cars \n3.Search Car by Make \n4.Filter Cars by Type \n5.Remove a Car by Model \n6.Exit";
             Console.WriteLine(menuStr);
-            var menu = new MenuModel();
+            var menu = new Menu();
             menu.Start();
         }
 

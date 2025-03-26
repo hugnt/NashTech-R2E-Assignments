@@ -12,3 +12,4 @@ D:\Documents\NashTech\Mentoring\Assignment01\Assignment01\obj\Debug\net8.0\refin
 D:\Documents\NashTech\Mentoring\Assignment01\Assignment01\obj\Debug\net8.0\Assignment01.pdb
 D:\Documents\NashTech\Mentoring\Assignment01\Assignment01\obj\Debug\net8.0\Assignment01.genruntimeconfig.cache
 D:\Documents\NashTech\Mentoring\Assignment01\Assignment01\obj\Debug\net8.0\ref\Assignment01.dll
+D:\Documents\NashTech\Mentoring\Assignment01\Assignment01\obj\Debug\net8.0\Assignment01.sourcelink.json
