@@ -19,8 +19,9 @@ namespace Assignment03.API
 
 
             //add DI service
+
             //builder.Services.AddSingleton<ILoggingService, SeriLogService>();
-            builder.Services.AddSingleton<ILoggingService, LoggingService>();
+            builder.Services.AddSingleton<ILoggingService, SeriLogService>();
             builder.Services.AddSingleton<IStudentService, StudentService>();
 
             var app = builder.Build();
