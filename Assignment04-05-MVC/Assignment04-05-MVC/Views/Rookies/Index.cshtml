@@ -7,7 +7,6 @@
 	if (Model.Gender == Gender.Male) genderString = "0";
 	else if (Model.Gender == Gender.Female) genderString = "1";
 
-	int showFullName = Model.DisplayFields == "FullName"?1:0;
 }
 
 
@@ -91,7 +90,7 @@
 					<thead>
 						<tr class="bg-secondary text-light">
 							@{
-								if (showFullName==1)
+								if (Model.DisplayFields == "FullName")
 								{
 									
 									<th scope="col">Full Name</th>
@@ -121,7 +120,7 @@
 							{
 								<tr class="align-middle">
 									@{
-										if (showFullName==1)
+										if (Model.DisplayFields == "FullName")
 										{
 												<td>@(p.FullName)</td>
 										}
@@ -179,11 +178,11 @@
 							{
 								if (i == Model.PageNumber)
 								{
-													<li class="page-item" style="cursor:pointer"><a class="page-link bg-success text-white">@i</a></li>
+									<li class="page-item" style="cursor:pointer"><a class="page-link bg-success text-white">@i</a></li>
 								}
 								else
 								{
-													<li class="page-item" style="cursor:pointer" onclick="setPageNumber(@i)"><a class="page-link text-success">@i</a></li>
+									<li class="page-item" style="cursor:pointer" onclick="setPageNumber(@i)"><a class="page-link text-success">@i</a></li>
 								}
 							}
 						}
@@ -227,15 +226,13 @@
 
 	$('#gender').val(@genderString);
 
-	const showFullName = @showFullName;
-	$("#showFullName").prop('checked', showFullName == 1);
+	const showFullName = '@Model.DisplayFields' === "FullName";
+	$("#showFullName").prop('checked', showFullName);
 
-	$('#birthYear').val(@Model.BirthYear)
+	if('@Model.BirthYear'!==-1) $('#birthYear').val(@Model.BirthYear)
 
 
 	// $('#BirthYearCompare').val(@Model.BirthYear)
-
-
 
 
 	function setPageNumber(pageNumber){
@@ -250,10 +247,10 @@
 
 	$("#showFullName").change(function(){
 		if ($(this).is(':checked')) {
-				window.location.href = '/Rookies?DisplayFields="FullName"'
+				window.location.href = '/Rookies?DisplayFields=FullName'
 		}
 		else {
-				window.location.href = '/Rookies?DisplayFields="*'
+				window.location.href = '/Rookies?DisplayFields=*'
 		}
 	})
 
