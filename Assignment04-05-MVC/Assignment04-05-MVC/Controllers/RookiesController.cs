@@ -1,4 +1,5 @@
 ﻿using Assignment04_05_MVC.Helper;
+using Assignment04_05_MVC.Models;
 using Assignment04_05_MVC.Services;
 using Assignment04_05_MVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -39,6 +40,15 @@ public class RookiesController : Controller
         return View(personVM);
     }
 
+    [HttpPost]
+    public IActionResult ExportToExcel(string displayFields, [FromBody]List<Person> lstPersons)
+    {
+        var exportedResult = FileExport.ExportToExcel<Person>(lstPersons, displayFields);
+		return new FileContentResult(exportedResult, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+		{
+			FileDownloadName = "ExportData.xlsx"
+		};
+	}
   
 
     
