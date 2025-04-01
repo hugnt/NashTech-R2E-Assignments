@@ -93,20 +93,21 @@
 							@{
 								if (showFullName==1)
 								{
-												<th scope="col">ID</th>
-												<th scope="col">First Name</th>
-												<th scope="col">Last Name</th>
-												<th scope="col">Gender</th>
-												<th scope="col">Date Of Birth</th>
-												<th scope="col">Phone Number</th>
-												<th scope="col">Birth Place</th>
-												<th scope="col">Is Graduated</th>
-												<th scope="col" class="text-center">Action</th>
+									
+									<th scope="col">Full Name</th>
+									<th scope="col" class="text-center">Action</th>
 								}
 								else
 								{
-												<th scope="col">Full Name</th>
-												<th scope="col" class="text-center">Action</th>
+									<th scope="col">ID</th>
+									<th scope="col">First Name</th>
+									<th scope="col">Last Name</th>
+									<th scope="col">Gender</th>
+									<th scope="col">Date Of Birth</th>
+									<th scope="col">Phone Number</th>
+									<th scope="col">Birth Place</th>
+									<th scope="col">Is Graduated</th>
+									<th scope="col" class="text-center">Action</th>
 								}
 							}
 						
@@ -118,41 +119,41 @@
 							// var startIndex = Model.PageNumber * Model.PageSize - Model.PageSize;
 							foreach (var p in Model.ListPerson)
 							{
-											<tr class="align-middle">
-												@{
+								<tr class="align-middle">
+									@{
 										if (showFullName==1)
 										{
-																	<td>@(p.FullName)</td>
+												<td>@(p.FullName)</td>
 										}
 										else
 										{
-																	<td>@(p.Id)</td>
-																	<td>@(p.FirstName)</td>
-																	<td>@(p.LastName)</td>
-																	<td>@(p.Gender == Gender.Male ? "Male" : "Female")</td>
-																	<td>@(p.DateOfBirth.ToString("MM/dd/yyyy"))</td>
-																	<td>@(p.PhoneNumber)</td>
-																	<td>@(p.BirthPlace)</td>
-																	<td>@(p.IsGraduated ? "Yes" : "No")</td>
+												<td>@(p.Id)</td>
+												<td>@(p.FirstName)</td>
+												<td>@(p.LastName)</td>
+												<td>@(p.Gender == Gender.Male ? "Male" : "Female")</td>
+												<td>@(p.DateOfBirth.ToString("MM/dd/yyyy"))</td>
+												<td>@(p.PhoneNumber)</td>
+												<td>@(p.BirthPlace)</td>
+												<td>@(p.IsGraduated ? "Yes" : "No")</td>
 										}
-												}
+									}
 													
-													<td class="d-flex justify-content-evenly">
-														<button type="button" class="btn btn-outline-primary" onclick="window.location.href='/Student/Details?id=@p.Id'">
-															<i class="bi bi-eye"></i>
-															Details
-														</button>
-														<button type="button" class="btn btn-outline-info" onclick="window.location.href='/Student/Edit?id=@p.Id'" style="margin:0 0.5rem 0 0.5rem;">
-															<i class="bi bi-arrow-repeat"></i>
-															Update
-														</button>
-														<button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="deleteStudent(@p.Id)" >
-															<i class="bi bi-trash3"></i>
-															Delete
-														</button>
+									<td class="d-flex justify-content-evenly">
+										<button type="button" class="btn btn-outline-primary" onclick="window.location.href='/Student/Details?id=@p.Id'">
+											<i class="bi bi-eye"></i>
+											Details
+										</button>
+										<button type="button" class="btn btn-outline-info" onclick="window.location.href='/Student/Edit?id=@p.Id'" style="margin:0 0.5rem 0 0.5rem;">
+											<i class="bi bi-arrow-repeat"></i>
+											Update
+										</button>
+										<button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="deleteStudent(@p.Id)" >
+											<i class="bi bi-trash3"></i>
+											Delete
+										</button>
 
-													</td>
-												</tr>
+									</td>
+								</tr>
 							}
 						}
 					</tbody>

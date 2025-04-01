@@ -34,7 +34,13 @@ namespace Assignment04_05_MVC
 
             app.UseAuthorization();
 
-            app.MapControllerRoute(
+
+			app.MapControllerRoute(
+	            name: "nashtech",
+	            pattern: "NashTech/{controller=Rookies}/{action=Index}/{id?}");
+
+
+			app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
