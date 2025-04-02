@@ -1,7 +1,9 @@
-﻿using Assignment04_05_MVC.Helper;
+﻿using Assignment04_05_MVC.Common;
 using Assignment04_05_MVC.Models;
 using Assignment04_05_MVC.Repositories;
+using DocumentFormat.OpenXml.Office2010.Excel;
 using System.Linq.Expressions;
+using System.Net;
 
 namespace Assignment04_05_MVC.Services;
 
@@ -13,8 +15,7 @@ public class PersonService:IPersonService
         _personRepository = personRepository;
     }
 
-
-    public List<Person> GetByFilter(FilterModel filter)
+	public List<Person> GetByFilter(FilterModel filter)
     {
 
 		var query = _personRepository.GetAllQueryAble();
@@ -65,5 +66,34 @@ public class PersonService:IPersonService
 
 		return query.ToList();
     }
+
+	public ResultModel<Person> GetById(int id)
+	{
+		var selectedPerson = _personRepository.GetAllQueryAble().FirstOrDefault(x => x.Id == id);
+		if (selectedPerson == null) return ResultModel<Person>.Error("Person is not existed!", HttpStatusCode.NotFound)
+;		return ResultModel<Person>.SuccessWithBody(selectedPerson);
+	}
+
+	public ResultModel<Person> Add(Person person)
+	{
+		_personRepository.Add(person);
+		return ResultModel<Person>.SuccessWithBody(person);
+	}
+
+	public ResultModel<bool> Delete(int id)
+	{
+		var selectedPerson = _personRepository.GetAllQueryAble().FirstOrDefault(x => x.Id == id);
+		if (selectedPerson==null) return ResultModel<bool>.Error("Person is not existed!", HttpStatusCode.NotFound);
+		_personRepository.Remove(selectedPerson);
+		return ResultModel<bool>.SuccessNoContent();
+	}
+
+	public ResultModel<Person> Update(int id, Person person)
+	{
+		if(!_personRepository.IsExist(id)) return ResultModel<Person>.Error("Person is not existed!", HttpStatusCode.NotFound);
+		person.Id = id;
+		_personRepository.Update(person);
+		return ResultModel<Person>.SuccessWithBody(person);
+	}
 
 }

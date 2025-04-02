@@ -31,14 +31,22 @@ public class PersonRepository : IPersonRepository
     };
     public void Add(Person person)
     {
-        ListPerson.Add(person);
+        var newId = ListPerson.Max(x => x.Id) + 1;
+        person.Id = newId;
+		ListPerson.Insert(0,person);
     }
 
     public IQueryable<Person> GetAllQueryAble()
     {
         return ListPerson.AsQueryable();
     }
-    public void Remove(Person person)
+
+	public bool IsExist(int id)
+	{
+        return ListPerson.Any(x => x.Id == id);
+	}
+
+	public void Remove(Person person)
     {
         ListPerson.Remove(person);
 
@@ -48,5 +56,5 @@ public class PersonRepository : IPersonRepository
     {
         var index = ListPerson.FindIndex(x => x.Id == person.Id);
         ListPerson[index] = person;
-}
+    }
 }

@@ -1,4 +1,6 @@
-﻿using Assignment04_05_MVC.Helper;
+﻿using Assignment04_05_MVC.Common;
+using Assignment04_05_MVC.Common.Enums;
+using Assignment04_05_MVC.Common.Helper;
 using Assignment04_05_MVC.Models;
 using Assignment04_05_MVC.Services;
 using Assignment04_05_MVC.ViewModels;
@@ -40,6 +42,42 @@ public class RookiesController : Controller
         return View(personVM);
     }
 
+
+    public IActionResult Details(FormRequestModel formRequest)
+    {
+        var personDetailsViewModel = new PersonDetailsViewModel();
+		personDetailsViewModel.FormMode = formRequest.FormMode;
+		
+		if (formRequest.FormMode == FormMode.Detail||formRequest.FormMode == FormMode.Update)
+		{
+			var selectedPerson = _personService.GetById(formRequest.Id);
+			personDetailsViewModel.Title = (formRequest.FormMode) switch
+			{
+				FormMode.Detail => $"Details about {selectedPerson.Metadata.FullName}",
+				FormMode.Update => $"Update {selectedPerson.Metadata.FullName}"
+			};
+			personDetailsViewModel.Person = selectedPerson.Metadata;
+			
+			if (formRequest.FormMode == FormMode.Update)
+			{
+				personDetailsViewModel.RouteAction = $"/Rookies/Update?id={formRequest.Id}";
+				personDetailsViewModel.Method = "PUT";
+			}
+		}
+		else if (formRequest.FormMode == FormMode.Add)
+		{
+			personDetailsViewModel.RouteAction = $"/Rookies/AddNew";
+			personDetailsViewModel.Method = "POST";
+			personDetailsViewModel.Title = "Add new rookies";
+			personDetailsViewModel.Person = new Person()
+			{
+				DateOfBirth = new DateTime(2000, 1, 1)
+			};
+		}
+		return View(personDetailsViewModel);
+    }
+
+
     [HttpPost]
     public IActionResult ExportToExcel(string displayFields, [FromBody]List<Person> lstPersons)
     {
@@ -49,7 +87,28 @@ public class RookiesController : Controller
 			FileDownloadName = "ExportData.xlsx"
 		};
 	}
-  
 
-    
+	[HttpPost]
+	public IActionResult AddNew([FromBody]Person person)
+	{
+		var result = _personService.Add(person);
+		return Json(result);
+	}
+
+	[HttpPut]
+	public IActionResult Update(int id, [FromBody] Person person)
+	{
+		var result = _personService.Update(id, person);
+		return Json(result);
+	}
+
+	[HttpDelete]
+	public IActionResult Delete(int id)
+	{
+		return Json(_personService.Delete(id));
+	}
+
+
+
+
 }

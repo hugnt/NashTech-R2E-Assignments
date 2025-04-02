@@ -1,23 +1,14 @@
-﻿@using Assignment04_05_MVC.Helper
+﻿@using Assignment04_05_MVC.Common
+@using Assignment04_05_MVC.Common.Helper
+@using Assignment04_05_MVC.Common.Enums
 @using Assignment04_05_MVC.ViewModels
+
 @model PersonViewModel
 @{
 	ViewData["Title"] = "Rookies";
 
-	var genderString = "";
-	if (Model.Gender == Gender.Male) genderString = "0";
-	else if (Model.Gender == Gender.Female) genderString = "1";
-
-	var birthYearCompareString = "";
-	if (Model.BirthYearCompare == BirthYearCompare.Greater) birthYearCompareString = "0";
-	else if (Model.BirthYearCompare == BirthYearCompare.Equal) birthYearCompareString = "1";
-	else if (Model.BirthYearCompare == BirthYearCompare.Lower) birthYearCompareString = "2";
-	else if (Model.BirthYearCompare == BirthYearCompare.None) birthYearCompareString = "3";
-
 
 }
-
-
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 <style>
@@ -99,7 +90,7 @@
 						</button>
 						
 						<button type="button" class="ms-2 btn btn-success"
-								onclick="window.location.href='#'">
+								onclick="window.location.href='/Rookies/Details?formMode=@FormMode.Add'">
 							<i class="bi bi-person-plus-fill"></i>
 							Add new
 						</button>
@@ -112,20 +103,20 @@
 								if (Model.DisplayFields == "FullName")
 								{
 									
-											<th scope="col">Full Name</th>
-											<th scope="col" class="text-center">Action</th>
+														<th scope="col">Full Name</th>
+														<th scope="col" class="text-center">Action</th>
 								}
 								else
 								{
-											<th scope="col">ID</th>
-											<th scope="col">First Name</th>
-											<th scope="col">Last Name</th>
-											<th scope="col">Gender</th>
-											<th scope="col">Date Of Birth</th>
-											<th scope="col">Phone Number</th>
-											<th scope="col">Birth Place</th>
-											<th scope="col">Is Graduated</th>
-											<th scope="col" class="text-center">Action</th>
+														<th scope="col">ID</th>
+														<th scope="col">First Name</th>
+														<th scope="col">Last Name</th>
+														<th scope="col">Gender</th>
+														<th scope="col">Date Of Birth</th>
+														<th scope="col">Phone Number</th>
+														<th scope="col">Birth Place</th>
+														<th scope="col">Is Graduated</th>
+														<th scope="col" class="text-center">Action</th>
 								}
 							}
 						
@@ -137,41 +128,45 @@
 							// var startIndex = Model.PageNumber * Model.PageSize - Model.PageSize;
 							foreach (var p in Model.ListPerson)
 							{
-										<tr class="align-middle">
-											@{
+									<tr id="row-@p.Id" class="align-middle">
+										@{
 										if (Model.DisplayFields == "FullName")
 										{
-																<td>@(p.FullName)</td>
+												<td>
+													<a href="/Rookies/Details?id=@p.Id&formMode=@FormMode.Update'">@(p.FullName)</a>
+												</td>
 										}
 										else
 										{
-																<td>@(p.Id)</td>
-																<td>@(p.FirstName)</td>
-																<td>@(p.LastName)</td>
-																<td>@(p.Gender == Gender.Male ? "Male" : "Female")</td>
-																<td>@(p.DateOfBirth.ToString("MM/dd/yyyy"))</td>
-																<td>@(p.PhoneNumber)</td>
-																<td>@(p.BirthPlace)</td>
-																<td>@(p.IsGraduated ? "Yes" : "No")</td>
+												<td>@(p.Id)</td>
+												<td>
+													<a href="/Rookies/Details?id=@p.Id&formMode=@FormMode.Update'">@(p.FirstName)</a>
+												</td>
+												<td>@(p.LastName)</td>
+												<td>@(p.Gender == Gender.Male ? "Male" : "Female")</td>
+												<td>@(p.DateOfBirth.ToString("MM/dd/yyyy"))</td>
+												<td>@(p.PhoneNumber)</td>
+												<td>@(p.BirthPlace)</td>
+												<td>@(p.IsGraduated ? "Yes" : "No")</td>
 										}
-											}
-															
-											<td class="d-flex justify-content-evenly">
-												<button type="button" class="btn btn-outline-primary" onclick="window.location.href='/Student/Details?id=@p.Id'">
-													<i class="bi bi-eye"></i>
-													Details
-												</button>
-												<button type="button" class="btn btn-outline-info" onclick="window.location.href='/Student/Edit?id=@p.Id'" style="margin:0 0.5rem 0 0.5rem;">
-													<i class="bi bi-arrow-repeat"></i>
-													Update
-												</button>
-												<button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="deleteStudent(@p.Id)" >
-													<i class="bi bi-trash3"></i>
-													Delete
-												</button>
+														}
+																		
+									<td class="d-flex justify-content-evenly">
+										<button type="button" class="btn btn-outline-primary" onclick="window.location.href='/Rookies/Details?id=@p.Id&formMode=@FormMode.Detail'">
+											<i class="bi bi-eye"></i>
+											Details
+										</button>
+										<button type="button" class="btn btn-outline-info" onclick="window.location.href='/Rookies/Details?id=@p.Id&formMode=@FormMode.Update'" style="margin:0 0.5rem 0 0.5rem;">
+											<i class="bi bi-arrow-repeat"></i>
+											Update
+										</button>
+										<button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModel" onclick="deleteStudent(@p.Id)" >
+											<i class="bi bi-trash3"></i>
+											Delete
+										</button>
 
-											</td>
-										</tr>
+									</td>
+								</tr>
 							}
 						}
 					</tbody>
@@ -197,11 +192,11 @@
 							{
 								if (i == Model.PageNumber)
 								{
-											<li class="page-item" style="cursor:pointer"><a class="page-link bg-success text-white">@i</a></li>
+														<li class="page-item" style="cursor:pointer"><a class="page-link bg-success text-white">@i</a></li>
 								}
 								else
 								{
-											<li class="page-item" style="cursor:pointer" onclick="setPageNumber(@i)"><a class="page-link text-success">@i</a></li>
+														<li class="page-item" style="cursor:pointer" onclick="setPageNumber(@i)"><a class="page-link text-success">@i</a></li>
 								}
 							}
 						}
@@ -219,18 +214,18 @@
 	</form>
 
 	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="deleteModel" tabindex="-1" aria-labelledby="deleteModelLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Are you sure to remove this?</h5>
+					<h5 class="modal-title" id="deleteModelLabel">Are you sure to remove this?</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
 					You can not see this information anymore
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" id="btn-remove">Delete</button>
+					<button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="btn-remove">Delete</button>
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 				</div>
 			</div>
@@ -238,12 +233,12 @@
 	</div>
 
 </div>
-
+@await Html.PartialAsync("~/Views/Shared/Partial/_PopupMessagePartial.cshtml")
 @section Scripts{
 <script>
 	$('#pageSize').val(@Model.PageSize);
 
-	$('#gender').val(@genderString);
+	$('#gender').val(@Model.GenderParsedData);
 
 	const showFullName = '@Model.DisplayFields' === "FullName";
 	$("#showFullName").prop('checked', showFullName);
@@ -253,7 +248,7 @@
 		$('#birthYear').val('@Model.BirthYear');
 	}
 
-	$('input[name="BirthYearCompare"][value="' + @birthYearCompareString + '"]').prop('checked', true);
+	$('input[name="BirthYearCompare"][value="' + @Model.BirthYearCompareParsedData + '"]').prop('checked', true);
 
 	function setPageNumber(pageNumber){
 		$("input[name='PageNumber']").val(pageNumber);
@@ -267,10 +262,10 @@
 
 	$("#showFullName").change(function(){
 		if ($(this).is(':checked')) {
-				window.location.href = '/Rookies?DisplayFields=FullName'
+			window.location.href = '/Rookies?DisplayFields=FullName'
 		}
 		else {
-				window.location.href = '/Rookies?DisplayFields=*'
+			window.location.href = '/Rookies?DisplayFields=*'
 		}
 	})
 
@@ -335,8 +330,23 @@
 	//DELETE
 	function deleteStudent(id){
 		console.log(id)
+		var toastLiveExample = document.getElementById('liveToast');
 		$('#btn-remove').click(function(){
-			window.location.href="#"+id;
+			$.ajax({
+				url: `/Rookies/Delete?id=${id}`,
+				type: 'DELETE',
+				contentType: 'application/json',
+				success: function (response, status, xhr) {
+					$(`#row-${id}`).remove();
+					var toast = new bootstrap.Toast(toastLiveExample)
+					$("#toastTitle").text("Delete");
+					$("#toastMessage").text("Deleted successfully!");
+					toast.show()
+				},
+				error: function (xhr, status, error) {
+
+				}
+			});
 		});
 
 	}
