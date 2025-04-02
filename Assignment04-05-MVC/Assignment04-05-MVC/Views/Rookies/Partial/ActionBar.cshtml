@@ -1,0 +1,82 @@
+﻿@using Assignment04_05_MVC.Common.Enums
+<nav class="navbar navbar-light bg-light justify-content-between mb-3 px-2 rounded">
+	<div class="form-inline d-flex align-items-center">
+		<div class="input-group w-auto border border-secondary rounded-2">
+			<label class="input-group-text bg-white text-secondary border-0" for="Gender">Gender</label>
+			<select name="Gender" class="form-select bg-secondary text-white border-0" id="gender">
+				<option value="" selected class="bg-white text-black">All</option>
+				<option value="0" class="bg-white text-black">Male</option>
+				<option value="1" class="bg-white text-black">Female</option>
+			</select>
+		</div>
+		<button onclick="window.location.href='/Rookies?OrderBy=DateOfBirth&IsReverse=false&Limit=1'"
+				class="ms-2 btn btn-outline-info my-2 my-sm-0 d-flex" type="button">
+			<span>Get oldest person</span>
+		</button>
+		<!-- Checkbox to Show Full Name Only -->
+		<div class="ms-2 d-flex ">
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" id="showFullName" name="showFullName">
+				<label class="form-check-label" for="showFullName">
+					Show Full Name Only
+				</label>
+			</div>
+		</div>
+		<!-- Year Filter Input Group -->
+		<div class="ms-5">
+			<div class="input-group w-auto border border-secondary rounded-2">
+				<label class="input-group-text text-white border-0 bg-secondary" for="birthYear">Year</label>
+				<input type="number" class="form-control border-0" id="birthYear" name="birthYear" placeholder="Enter birth year (optional)">
+			</div>
+
+			<!-- Year Comparison Radio Buttons -->
+			<div class=" d-flex">
+				<label for="BirthYearCompare" class="text-white">Filter by year:</label>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="BirthYearCompare" id="greater" value="0">
+					<label class="form-check-label" for="greater">Greater</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="BirthYearCompare" id="equal" value="1">
+					<label class="form-check-label" for="equal">Equal</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="BirthYearCompare" id="lower" value="2">
+					<label class="form-check-label" for="lower">Lower</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="BirthYearCompare" id="none" value="3" checked>
+					<label class="form-check-label" for="none">No filter</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="form-inline">
+		<button type="button" class="btn btn-outline-success"
+				onclick="exportToExcel()">
+			<i class="bi bi-file-earmark-excel"></i>
+			Export Excel
+		</button>
+		<button type="button" class="ms-2 btn btn-info"
+				onclick="window.location.href='/Rookies'">
+			<i class="bi bi-arrow-clockwise"></i>
+			Refesh
+		</button>
+		<button type="button" class="ms-2 btn btn-success"
+				onclick="addNewAction()">
+			<i class="bi bi-person-plus-fill"></i>
+			Add new
+		</button>
+	</div>
+</nav>
+<input type="number" name="Gender" value="@Model.Gender" hidden />
+<script>
+	function addNewAction(){
+		window.location.href = '/Rookies/Details?formMode=@FormMode.Add'
+	}
+	function exportToExcel(){
+		var data = @Html.Raw(Json.Serialize(Model.ListPerson));
+		var displayFields = '@Model.DisplayFields';
+		exportToExcelRequest(data, displayFields);
+	}
+</script>

@@ -1,0 +1,79 @@
+﻿@using Assignment04_05_MVC.ViewModels
+@using Assignment04_05_MVC.Common.Enums
+@model PersonViewModel
+
+<table class="table table-bordered bg-light">
+	<thead>
+		<tr class="bg-secondary text-light">
+			@{
+				if (Model.DisplayFields == "FullName")
+				{
+
+					<th scope="col">Full Name</th>
+					<th scope="col" class="text-center">Action</th>
+				}
+				else
+				{
+					<th scope="col">ID</th>
+					<th scope="col">First Name</th>
+					<th scope="col">Last Name</th>
+					<th scope="col">Gender</th>
+					<th scope="col">Date Of Birth</th>
+					<th scope="col">Phone Number</th>
+					<th scope="col">Birth Place</th>
+					<th scope="col">Is Graduated</th>
+					<th scope="col" class="text-center">Action</th>
+				}
+			}
+
+		</tr>
+	</thead>
+	<tbody>
+		@{
+			//var p = Model.Data;
+			// var startIndex = Model.PageNumber * Model.PageSize - Model.PageSize;
+			foreach (var p in Model.ListPerson)
+			{
+				<tr id="row-@p.Id" class="align-middle">
+					@{
+						if (Model.DisplayFields == "FullName")
+						{
+							<td>
+								<a href="/Rookies/Details?id=@p.Id&formMode=@FormMode.Update'">@(p.FullName)</a>
+							</td>
+						}
+						else
+						{
+							<td>@(p.Id)</td>
+							<td>
+								<a href="/Rookies/Details?id=@p.Id&formMode=@FormMode.Update'">@(p.FirstName)</a>
+							</td>
+							<td>@(p.LastName)</td>
+							<td>@(p.Gender == Gender.Male ? "Male" : "Female")</td>
+							<td>@(p.DateOfBirth.ToString("MM/dd/yyyy"))</td>
+							<td>@(p.PhoneNumber)</td>
+							<td>@(p.BirthPlace)</td>
+							<td>@(p.IsGraduated ? "Yes" : "No")</td>
+						}
+					}
+
+					<td class="d-flex justify-content-evenly">
+						<button type="button" class="btn btn-outline-primary" onclick="window.location.href='/Rookies/Details?id=@p.Id&formMode=@FormMode.Detail'">
+							<i class="bi bi-eye"></i>
+							Details
+						</button>
+						<button type="button" class="btn btn-outline-info" onclick="window.location.href='/Rookies/Details?id=@p.Id&formMode=@FormMode.Update'" style="margin:0 0.5rem 0 0.5rem;">
+							<i class="bi bi-arrow-repeat"></i>
+							Update
+						</button>
+						<button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModel" onclick="deletePerson(@p.Id)">
+							<i class="bi bi-trash3"></i>
+							Delete
+						</button>
+
+					</td>
+				</tr>
+			}
+		}
+	</tbody>
+</table>

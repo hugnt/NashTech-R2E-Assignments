@@ -9,4 +9,6 @@ public interface IPersonRepository
     void Add(Person person);
     void Update(Person person);
     bool IsExist(int id);
+
+
 }

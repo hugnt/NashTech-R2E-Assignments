@@ -35,7 +35,7 @@
             @RenderBody()
         </main>
     </div>
-
+    @await Html.PartialAsync("~/Views/Shared/Partial/_PopupMessagePartial.cshtml")
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2025 - Assignment04_05_MVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>

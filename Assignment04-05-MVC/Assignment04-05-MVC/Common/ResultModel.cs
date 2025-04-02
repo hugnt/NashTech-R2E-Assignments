@@ -8,7 +8,7 @@ public class ResultModel<T>
 	public HttpStatusCode StatusCode { get; set; }
 	public T? Metadata { get; set; }
 
-    public string Message { get; set; }
+    public string Message { get; set; } = "";
 
     public static ResultModel<T> GeneralError() => new ResultModel<T> { IsSuccess = false, StatusCode = HttpStatusCode.InternalServerError, Message ="Error", Metadata = default(T) };
 	public static ResultModel<T> ErrorWithMessage(string message) => new ResultModel<T> { IsSuccess = false, StatusCode = HttpStatusCode.InternalServerError, Message = message, Metadata = default(T) };

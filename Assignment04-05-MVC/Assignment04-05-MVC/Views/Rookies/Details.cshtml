@@ -101,7 +101,8 @@
 					
 					<div class="d-flex">
 						<button class="btn btn-danger" type="button"
-								hidden="@Model.IsHideDeleteButton">
+								hidden="@Model.IsHideDeleteButton"
+								data-bs-toggle="modal" data-bs-target="#deleteModel" onclick="deletePerson(@Model.Person.Id, true)">
 							<i class="bi bi-trash"></i>
 							Delete
 						</button>
@@ -119,31 +120,8 @@
 		</div>
 	</div>
 </div>
-
-<script>
-	function saveData(url, method) {
-		var data = {
-			firstName: $("#FirstName").val(),
-			lastName: $("#LastName").val(),
-			dateOfBirth: $("#DateOfBirth").val(),
-			gender: $("#Gender").val()=="0"?0:1,
-			phoneNumber: $("#PhoneNumber").val(),
-			birthPlace: $("#BirthPlace").val(),
-			isGraduated: $("#IsGraduated").prop('checked')
-		}
-		console.log("data:",data);
-		$.ajax({
-			url: url,
-			type: method,
-			contentType: 'application/json',
-			data: JSON.stringify(data),
-			success: function (response, status, xhr) {
-				window.location.href="/Rookies"
-			},
-			error: function (xhr, status, error) {
-				
-			}
-		});
-	}
-</script>
+@await Html.PartialAsync("~/Views/Shared/Partial/_DeleteModalPartial.cshtml")
+@section Scripts{
+	<script src="~/js/person/person-crud.js"></script>
+}
 
