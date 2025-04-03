@@ -94,6 +94,7 @@ public class TodoService : ITodoService
 
 	public Result<bool> AddMany(List<TodoRequest> newListTodoItem)
 	{
+		if (newListTodoItem.Count() == 0) return Result<bool>.Error("The list of todo must not be empty!", HttpStatusCode.BadRequest);
 		var validateModel = IsValidTodo(newListTodoItem);
 		if (!validateModel.IsValid)
 		{
@@ -112,6 +113,7 @@ public class TodoService : ITodoService
 	}
 	public Result<bool> DeleteMany(List<int> listDeletedIds)
 	{
+		if (listDeletedIds.Count() == 0) return Result<bool>.Error("The list of id must not be empty!", HttpStatusCode.BadRequest);
 		var validateModel = IsExisted(listDeletedIds);
 		if (!validateModel.IsValid)
 		{
@@ -123,6 +125,7 @@ public class TodoService : ITodoService
 
 	private ValidateModel IsExisted(List<int> listIds)
 	{
+		
 		var allEntityIds = _todoRepository.GetAll().Select(x => x.Id).ToList();
 		//var unexpectedId = listIds.FirstOrDefault(x=> !allEntityIds.Contains(x));
 		foreach (var id in listIds)
