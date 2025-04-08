@@ -1,5 +1,5 @@
 
-using Assignment07.API.MiddleWares;
+using Assignment07.API.Middlewares;
 using Assignment07.Application;
 using Assignment07.Domain.Entities;
 using Assignment07.Domain.Enums;
@@ -13,6 +13,9 @@ namespace Assignment07.API
 		public static void Main(string[] args)
 		{
 			var builder = WebApplication.CreateBuilder(args);
+			//Exception handlers
+			builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+			builder.Services.AddProblemDetails();
 
 			// Add db & repositoriy settings to the container.
 			builder.Services.AddDIRepositories(builder.Configuration);
@@ -27,7 +30,7 @@ namespace Assignment07.API
 			builder.Services.AddSwaggerGen();
 
 			var app = builder.Build();
-		
+			app.UseExceptionHandler();
 			app.UseMiddleware<ResultHandlingMiddleware>();
 
 			// Configure the HTTP request pipeline.

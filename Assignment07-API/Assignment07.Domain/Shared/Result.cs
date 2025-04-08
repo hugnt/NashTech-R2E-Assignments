@@ -32,7 +32,7 @@ namespace Assignment07.Domain.Shared
 			{
 				IsSuccess = false,
 				StatusCode = statusCode,
-				Message = "Error",
+				Message = errors.FirstOrDefault()??"Error",
 				Errors = errors.ToList()
 			};
 		}

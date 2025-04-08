@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System.Net;
 
-namespace Assignment07.API.MiddleWares;
+namespace Assignment07.API.Middlewares;
 
 public class ResultHandlingMiddleware
 {

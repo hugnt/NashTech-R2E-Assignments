@@ -8,10 +8,9 @@ namespace Assignment07.Application.Common.Exceptions
 {
 	public class ValidationException: Exception
 	{
-        public IEnumerable<string> Messages { get; private set; }
-        public ValidationException(IEnumerable<string> messages) : base()
+        public ValidationException(IEnumerable<string> messages) : base(string.Join(",", messages))
 		{
-			Messages = messages;
+			
 		}
 	}
 }

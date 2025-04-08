@@ -27,10 +27,7 @@ public class PersonService : IPersonService
     public Result Add(PersonRequest newPerson)
 	{
 		var validateResult = _personRequestValidator.Validate(newPerson);
-		if (!validateResult.IsValid)
-		{
-			return Result<Person>.ErrorValidation(HttpStatusCode.BadRequest, validateResult.Errors.Select(x=>x.ErrorMessage));
-		}
+		if (!validateResult.IsValid) throw new Common.Exceptions.ValidationException(validateResult.Errors.Select(x => x.ErrorMessage));
 		var newEntity = newPerson.ToEntity();
 		newEntity.CreatedAt = DateTime.Now;
 		_personRepository.Add(newEntity);
@@ -40,42 +37,25 @@ public class PersonService : IPersonService
 
 	public Result Delete(Guid id)
 	{
-		try
-		{
-			var selectedEntity = _personRepository.GetAll().FirstOrDefault(x => x.Id == id);
-			if (selectedEntity == null) throw new ObjectNotExistedException(MessageAlert.ObjectNotFound(id, "Person"));
-			_personRepository.Delete(selectedEntity);
-			_unitOfWork.SaveChanges();
-			return Result.Success(MessageAlert.DeletedSuccessfully(id,"Person"), HttpStatusCode.NoContent); 
-		}
-		catch (ObjectNotExistedException e)
-		{
-			return Result.Error(e.Message, HttpStatusCode.NotFound);
-		}
-
+		var selectedEntity = _personRepository.GetAll().FirstOrDefault(x => x.Id == id);
+		if (selectedEntity == null) throw new ObjectNotExistedException(MessageAlert.ObjectNotFound(id, "Person"));
+		_personRepository.Delete(selectedEntity);
+		_unitOfWork.SaveChanges();
+		return Result.Success(MessageAlert.DeletedSuccessfully(id,"Person"), HttpStatusCode.NoContent); 
 	}
 
 	public Result Update(Guid id, PersonRequest updatedPerson)
 	{
 		var validateResult = _personRequestValidator.Validate(updatedPerson);
-		if (!validateResult.IsValid)
-		{
-			return Result<Person>.ErrorValidation(HttpStatusCode.BadRequest, validateResult.Errors.Select(x => x.ErrorMessage));
-		}
-		try
-		{
-			if (!_personRepository.GetAll().Any(x=>x.Id==id)) throw new ObjectNotExistedException(MessageAlert.ObjectNotFound(id, "Person"));
-			var updatedEntity = updatedPerson.ToEntity();
-			updatedEntity.Id = id;
-			updatedEntity.UpdatedAt = DateTime.Now;
-			_personRepository.Update(updatedEntity);
-			_unitOfWork.SaveChanges();
-			return Result.Success(MessageAlert.UpdatedSuccessfully(id, "Person"), HttpStatusCode.Created);
-		}
-		catch (ObjectNotExistedException e)
-		{
-			return Result.Error(e.Message, HttpStatusCode.NotFound);
-		}
+		if (!validateResult.IsValid) throw new Common.Exceptions.ValidationException(validateResult.Errors.Select(x => x.ErrorMessage));
+		if (!_personRepository.GetAll().Any(x=>x.Id==id)) throw new ObjectNotExistedException(MessageAlert.ObjectNotFound(id, "Person"));
+		var updatedEntity = updatedPerson.ToEntity();
+		updatedEntity.Id = id;
+		updatedEntity.UpdatedAt = DateTime.Now;
+		_personRepository.Update(updatedEntity);
+		_unitOfWork.SaveChanges();
+		return Result.Success(MessageAlert.UpdatedSuccessfully(id, "Person"), HttpStatusCode.Created);
+		
 	}
 
 	public Result<List<PersonResponse>> Filter(PersonFilterRequest filterModel)
