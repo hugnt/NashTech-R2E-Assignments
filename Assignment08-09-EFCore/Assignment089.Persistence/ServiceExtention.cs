@@ -18,10 +18,10 @@ public static class ServiceExtension
 		//db
 		string connectionString = configuration.GetConnectionString("Database")!;
 
-		services.AddDbContext<AppDbContext>(options =>
+		services.AddDbContextPool<AppDbContext>(options =>
 		{
 			options.UseSqlServer(connectionString);
-		});
+		},poolSize:128);
 
 		//unit of work
 		services.AddScoped<IUnitOfWork, UnitOfWork>();
