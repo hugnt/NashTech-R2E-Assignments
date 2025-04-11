@@ -1,4 +1,5 @@
 ﻿using Assignment089.Domain.Entities;
+using Assignment089.Domain.Models;
 using Assignment089.Persistence.Configurations;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
@@ -24,6 +25,7 @@ public class AppDbContext : DbContext
 	public DbSet<ProjectEmployee> ProjectEmployees { get; set; }
 	public DbSet<Salary> Salaries { get; set; }
 
-
-
+	public DbSet<EmployeeDepartmentQueryResult> EmployeeDepartmentQueryResults { get; set; }
+	public DbSet<EmployeeProjectQueryResult> EmployeeProjectQueryResults { get; set; }
+	public DbSet<EmployeeSalaryQueryResult> EmployeeSalaryQueryResults { get; set; }
 }

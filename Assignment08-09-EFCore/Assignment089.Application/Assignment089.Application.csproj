@@ -7,11 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Mapping\" />
-    <Folder Include="Models\Responses\" />
-    <Folder Include="Models\Requests\" />
-    <Folder Include="Services\Interfaces\" />
-    <Folder Include="Services\Implementations\" />
+    <ProjectReference Include="..\Assignment089.Domain\Assignment089.Domain.csproj" />
+    <ProjectReference Include="..\Assignment089.Persistence\Assignment089.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Shared\Enums\" />
   </ItemGroup>
 
 </Project>

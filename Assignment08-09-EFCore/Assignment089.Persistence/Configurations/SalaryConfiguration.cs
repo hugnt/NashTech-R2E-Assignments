@@ -21,6 +21,7 @@ public sealed class SalaryConfiguration : IEntityTypeConfiguration<Salary>
 
 		builder
 			.HasOne<Employee>(s => s.Employee).WithOne(e => e.Salary)
-			.HasForeignKey<Salary>(e => e.EmployeeId);
+			.HasForeignKey<Salary>(e => e.EmployeeId)
+			.OnDelete(DeleteBehavior.Cascade); ;
 	}
 }

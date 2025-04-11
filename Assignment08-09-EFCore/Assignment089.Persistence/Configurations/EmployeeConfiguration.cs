@@ -22,7 +22,9 @@ public sealed class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
  
 		builder
 			.HasOne<Department>(e => e.Department).WithMany(d=>d.Employees)
-			.HasForeignKey(e => e.DepartmentId);
+			.HasForeignKey(e => e.DepartmentId)
+			.OnDelete(DeleteBehavior.Cascade);
+
 
 	}
 }

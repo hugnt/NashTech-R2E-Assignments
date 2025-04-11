@@ -22,13 +22,10 @@ public static class ServiceExtension
 		{
 			options.UseSqlServer(connectionString);
 		},poolSize:128);
-
-		//unit of work
-		services.AddScoped<IUnitOfWork, UnitOfWork>();
 		
 		//Repositories
 		services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-		services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+		services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
 		return services;
 	}
