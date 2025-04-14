@@ -24,6 +24,4 @@ public class FilterModel
 
     public int BirthYear { get; set; } = -1;
     public BirthYearCompare BirthYearCompare { get; set; } = BirthYearCompare.None;
-
-
 }
