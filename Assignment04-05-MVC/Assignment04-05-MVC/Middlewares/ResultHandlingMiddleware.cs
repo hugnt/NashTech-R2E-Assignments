@@ -1,8 +1,7 @@
-﻿using Assignment089.Application.Shared;
+﻿using Assignment04_05_MVC.Common;
 using Newtonsoft.Json;
 
-
-namespace Assignment089.API.Middlewares;
+namespace Assignment04_05_MVC.Middlewares;
 
 public class ResultHandlingMiddleware
 {
@@ -13,14 +12,9 @@ public class ResultHandlingMiddleware
 		_next = next;
 	}
 
+
 	public async Task InvokeAsync(HttpContext httpContext)
 	{
-		// Bỏ qua các request đến Swagger
-		if (httpContext.Request.Path.StartsWithSegments("/swagger"))
-		{
-			await _next(httpContext);
-			return;
-		}
 		var originalBodyStream = httpContext.Response.Body;
 
 		try
@@ -43,7 +37,7 @@ public class ResultHandlingMiddleware
 					httpContext.Response.StatusCode = (int)result.StatusCode;
 				}
 			}
-			catch (JsonException){}
+			catch (JsonException) { }
 
 			await responseBody.CopyToAsync(originalBodyStream);
 		}

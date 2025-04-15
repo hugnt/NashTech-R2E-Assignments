@@ -65,8 +65,13 @@ function saveData(url, method) {
 			localStorage.setItem("messageToast", "Data updated Successfully!");
 			window.location.href = "/Rookies"
 		},
-		error: function (xhr, status, error) {
-
+		error: function (res) {
+			console.log("error", res.responseJSON)
+			var toastLiveExample = document.getElementById('liveToast');
+			var toast = new bootstrap.Toast(toastLiveExample);
+			$("#toastTitle").text("Add");
+			$("#toastMessage").text(res.responseJSON?.message??"error");
+			toast.show()
 		}
 	});
 }
@@ -75,6 +80,7 @@ function saveData(url, method) {
 function deletePerson(id, isRedirect=false) {
 	console.log(id)
 	var toastLiveExample = document.getElementById('liveToast');
+	var toast = new bootstrap.Toast(toastLiveExample);
 	$('#btn-remove').click(function () {
 		$.ajax({
 			url: `/Rookies/Delete?id=${id}`,
@@ -85,13 +91,14 @@ function deletePerson(id, isRedirect=false) {
 				localStorage.setItem("messageToast", "Deleted successfully!");
 				if (isRedirect) window.location.href="/Rookies"
 				$(`#row-${id}`).remove();
-				var toast = new bootstrap.Toast(toastLiveExample)
 				$("#toastTitle").text("Delete");
 				$("#toastMessage").text("Deleted successfully!");
 				toast.show()
 			},
 			error: function (xhr, status, error) {
-
+				$("#toastTitle").text("Delete");
+				$("#toastMessage").text("Deleted error!");
+				toast.show()
 			}
 		});
 	});

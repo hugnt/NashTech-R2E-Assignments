@@ -2,6 +2,7 @@
 using Assignment04_05_MVC.Models;
 using Assignment04_05_MVC.Repositories;
 using DocumentFormat.OpenXml.Office2010.Excel;
+using FluentValidation;
 using System.Linq.Expressions;
 using System.Net;
 
@@ -10,10 +11,12 @@ namespace Assignment04_05_MVC.Services;
 public class PersonService:IPersonService
 {
     private readonly IPersonRepository _personRepository;
-    public PersonService(IPersonRepository personRepository)
-    {
-        _personRepository = personRepository;
-    }
+	private readonly IValidator<Person> _personValidator;
+	public PersonService(IPersonRepository personRepository, IValidator<Person> personValidator)
+	{
+		_personRepository = personRepository;
+		_personValidator = personValidator;
+	}
 
 	public List<Person> GetByFilter(FilterModel filter)
     {
@@ -67,33 +70,52 @@ public class PersonService:IPersonService
 		return query.ToList();
     }
 
-	public ResultModel<Person> GetById(int id)
+	public Result<Person> GetById(int id)
 	{
 		var selectedPerson = _personRepository.GetAllQueryAble().FirstOrDefault(x => x.Id == id);
-		if (selectedPerson == null) return ResultModel<Person>.Error("Person is not existed!", HttpStatusCode.NotFound)
-;		return ResultModel<Person>.SuccessWithBody(selectedPerson);
+		if (selectedPerson == null) return Result<Person>.Error(HttpStatusCode.NotFound,"Person is not existed!")
+;		return Result<Person>.SuccessWithBody(selectedPerson);
 	}
 
-	public ResultModel<Person> Add(Person person)
+	public Result Add(Person person)
 	{
+		var validateResult = _personValidator.Validate(person);
+		if (!validateResult.IsValid)
+		{
+			return Result.ErrorValidation(HttpStatusCode.BadRequest, validateResult.Errors.Select(x => x.ErrorMessage));
+		}
+		if (_personRepository.GetAllQueryAble().Any(x => x.PhoneNumber == person.PhoneNumber))
+		{
+			return Result.Error(HttpStatusCode.BadRequest, "Phone number is existed!");
+		}
 		_personRepository.Add(person);
-		return ResultModel<Person>.SuccessWithBody(person);
+		return Result.Success("Created Successfullt", HttpStatusCode.Created);
 	}
 
-	public ResultModel<bool> Delete(int id)
+	public Result Delete(int id)
 	{
 		var selectedPerson = _personRepository.GetAllQueryAble().FirstOrDefault(x => x.Id == id);
-		if (selectedPerson==null) return ResultModel<bool>.Error("Person is not existed!", HttpStatusCode.NotFound);
+		if (selectedPerson==null) return Result.Error(HttpStatusCode.NotFound,"Person is not existed!");
 		_personRepository.Remove(selectedPerson);
-		return ResultModel<bool>.SuccessNoContent();
+		return Result.SuccessNoContent();
 	}
 
-	public ResultModel<Person> Update(int id, Person person)
+	public Result Update(int id, Person person)
 	{
-		if(!_personRepository.IsExist(id)) return ResultModel<Person>.Error("Person is not existed!", HttpStatusCode.NotFound);
+		if(!_personRepository.GetAllQueryAble().Any(x=> x.Id == id)) return Result.Error(HttpStatusCode.NotFound, "Person is not existed!");
+		var validateResult = _personValidator.Validate(person);
+		if (!validateResult.IsValid)
+		{
+			return Result.ErrorValidation(HttpStatusCode.BadRequest, validateResult.Errors.Select(x => x.ErrorMessage));
+		}
+		if (_personRepository.GetAllQueryAble().Any(x => x.PhoneNumber == person.PhoneNumber))
+		{
+			return Result.Error(HttpStatusCode.BadRequest, "Phone number is existed!");
+		}
+		//Check phone number existed
 		person.Id = id;
 		_personRepository.Update(person);
-		return ResultModel<Person>.SuccessWithBody(person);
+		return Result.SuccessNoContent();
 	}
 
 }

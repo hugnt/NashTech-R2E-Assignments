@@ -10,11 +10,11 @@
 		</select>
 	</div>
 	<ul class="pagination d-flex justify-content-center">
-		<li class="page-item">
+		@* <li class="page-item">
 			<a class="page-link" href="#" aria-label="Previous">
 				<i class="text-success bi bi-caret-left"></i>
 			</a>
-		</li>
+		</li> *@
 		@{
 
 			for (var i = 1; i <= Model.TotalPages; i++)
@@ -29,11 +29,11 @@
 				}
 			}
 		}
-		<li class="page-item">
+		@* <li class="page-item">
 			<a class="page-link" href="#" aria-label="Next">
 				<i class="text-success bi bi-caret-right"></i>
 			</a>
-		</li>
+		</li> *@
 	</ul>
 </nav>
 <input type="number" name="PageNumber" value="@Model.PageNumber" hidden />

@@ -8,7 +8,5 @@ public interface IPersonRepository
     void Remove(Person person);
     void Add(Person person);
     void Update(Person person);
-    bool IsExist(int id);
-
 
 }

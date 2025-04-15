@@ -2,18 +2,41 @@
 
 namespace Assignment04_05_MVC.Common;
 
-public class ResultModel<T>
+
+public enum ErrorCode
 {
-    public bool IsSuccess { get; set; }
+	NoError,
+	Validation,
+	CheckExisted
+}
+
+public class Result
+{
+	public bool IsSuccess { get; set; }
 	public HttpStatusCode StatusCode { get; set; }
+	public string Message { get; set; } = "";
+	public List<string> Errors { get; set; } = [];
+	public ErrorCode ErrorCode { get; set; }
+	public static Result Error(HttpStatusCode statusCode, string message) => new() { IsSuccess = false, StatusCode = statusCode, Message = message };
+	public static Result SuccessNoContent() => new() { IsSuccess = true, StatusCode = HttpStatusCode.NoContent, Message = "Success" };
+	public static Result Success(string message, HttpStatusCode statusCode) => new() { IsSuccess = true, StatusCode = statusCode, Message = message };
+
+	public static Result ErrorValidation(HttpStatusCode statusCode, IEnumerable<string> errors)
+	{
+		return new()
+		{
+			IsSuccess = false,
+			StatusCode = statusCode,
+			Message = errors.FirstOrDefault() ?? "Error",
+			ErrorCode = ErrorCode.Validation,
+			Errors = errors.ToList()
+		};
+	}
+}
+
+public class Result<T> : Result
+{
 	public T? Metadata { get; set; }
-
-    public string Message { get; set; } = "";
-
-    public static ResultModel<T> GeneralError() => new ResultModel<T> { IsSuccess = false, StatusCode = HttpStatusCode.InternalServerError, Message ="Error", Metadata = default(T) };
-	public static ResultModel<T> ErrorWithMessage(string message) => new ResultModel<T> { IsSuccess = false, StatusCode = HttpStatusCode.InternalServerError, Message = message, Metadata = default(T) };
-	public static ResultModel<T> Error(string message, HttpStatusCode statusCode) => new ResultModel<T> { IsSuccess = false, StatusCode = statusCode, Message = message, Metadata = default(T) };
-	public static ResultModel<T> SuccessWithBody(T body) => new ResultModel<T> { IsSuccess = true, StatusCode = HttpStatusCode.OK, Message = "Ok", Metadata = body };
-	public static ResultModel<T> SuccessNoContent() => new ResultModel<T> { IsSuccess = true, StatusCode = HttpStatusCode.NoContent, Message = "Success", Metadata = default(T) };
-
+	public static Result<T> Error(HttpStatusCode statusCode, string message) => new() { IsSuccess = false, StatusCode = statusCode, Message = message };
+	public static Result<T> SuccessWithBody(T body) => new() { IsSuccess = true, StatusCode = HttpStatusCode.OK, Message = "Ok", Metadata = body };
 }

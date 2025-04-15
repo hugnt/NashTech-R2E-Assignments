@@ -50,12 +50,10 @@ public class RookiesController : Controller
 		if (formRequest.FormMode == FormMode.Detail || formRequest.FormMode == FormMode.Update)
 		{
 			var selectedPerson = _personService.GetById(formRequest.Id);
-			personDetailsViewModel.Title = (formRequest.FormMode) switch
-			{
-				FormMode.Detail => $"Details about {selectedPerson.Metadata?.FullName ?? ""}",
-				FormMode.Update => $"Update {selectedPerson.Metadata?.FullName ?? ""}",
-				_ => ""
-			};
+			personDetailsViewModel.Title = formRequest.FormMode == FormMode.Detail ?
+									$"Details about {selectedPerson.Metadata?.FullName ?? ""}" :
+									$"Update {selectedPerson.Metadata?.FullName ?? ""}";
+
 			if (selectedPerson.Metadata != null) personDetailsViewModel.Person = selectedPerson.Metadata;
 
 			if (formRequest.FormMode == FormMode.Update)

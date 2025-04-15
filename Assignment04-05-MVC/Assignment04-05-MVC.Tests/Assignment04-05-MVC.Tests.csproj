@@ -24,10 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Assignment04-05-MVC\Assignment04-05-MVC.csproj" />
   </ItemGroup>
 

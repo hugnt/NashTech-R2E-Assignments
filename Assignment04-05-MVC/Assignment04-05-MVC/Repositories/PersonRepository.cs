@@ -31,7 +31,7 @@ public class PersonRepository : IPersonRepository
     };
     public void Add(Person person)
     {
-        var newId = ListPerson.Max(x => x.Id) + 1;
+        var newId = ListPerson.Max(x => x.Id) + 1; // Because of data fixed
         person.Id = newId;
 		ListPerson.Insert(0,person);
     }
@@ -41,15 +41,9 @@ public class PersonRepository : IPersonRepository
         return ListPerson.AsQueryable();
     }
 
-	public bool IsExist(int id)
-	{
-        return ListPerson.Any(x => x.Id == id);
-	}
-
 	public void Remove(Person person)
     {
         ListPerson.Remove(person);
-
     }
 
     public void Update(Person person)
@@ -57,4 +51,13 @@ public class PersonRepository : IPersonRepository
         var index = ListPerson.FindIndex(x => x.Id == person.Id);
         ListPerson[index] = person;
     }
+
+    public void MockData(List<Person> listPerson) {
+        ListPerson = listPerson;
+	}
+
+    public List<Person> GetMockData()
+    {
+        return ListPerson;
+	}
 }

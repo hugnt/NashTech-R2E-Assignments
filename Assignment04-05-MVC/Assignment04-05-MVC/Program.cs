@@ -1,5 +1,10 @@
+using Assignment04_05_MVC.Middlewares;
+using Assignment04_05_MVC.Models;
 using Assignment04_05_MVC.Repositories;
 using Assignment04_05_MVC.Services;
+using Assignment04_05_MVC.Validators;
+using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
+using FluentValidation;
 
 namespace Assignment04_05_MVC
 {
@@ -8,19 +13,27 @@ namespace Assignment04_05_MVC
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+			//Exception handlers
+			builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+			builder.Services.AddProblemDetails();
 
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
+			// Add services to the container.
+			builder.Services.AddControllersWithViews();
 
 
             //Add DI
             builder.Services.AddSingleton<IPersonRepository, PersonRepository>();
-            builder.Services.AddSingleton<IPersonService, PersonService>();
+			builder.Services.AddSingleton<IPersonService, PersonService>();
 
-            var app = builder.Build();
+			//Validator
+			builder.Services.AddSingleton<IValidator<Person>, PersonValidator>();
 
-            // Configure the HTTP request pipeline.
-            if (!app.Environment.IsDevelopment())
+			var app = builder.Build();
+			app.UseExceptionHandler();
+			app.UseMiddleware<ResultHandlingMiddleware>();
+
+			// Configure the HTTP request pipeline.
+			if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
@@ -42,7 +55,7 @@ namespace Assignment04_05_MVC
 
 			app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Rookies}/{action=Index}/{id?}");
 
             app.Run();
         }
