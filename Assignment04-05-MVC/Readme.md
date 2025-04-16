@@ -1,43 +1,44 @@
 ## Unit test ✅
 
 - **Position**: 
-		- Branch: [unit_test](https://github.com/hugnt/NashTech-R2E-Assignments/tree/unit_test)
-		- Folder: [Assignment04-05-MVC](https://github.com/hugnt/NashTech-R2E-Assignments/tree/unit_test/Assignment04-05-MVC)
-		- Quick access: [Here](https://github.com/hugnt/NashTech-R2E-Assignments/tree/unit_test/Assignment04-05-MVC)
+		 <br>- Branch: [unit_test](https://github.com/hugnt/NashTech-R2E-Assignments/tree/unit_test)
+		 <br>- Folder: [Assignment04-05-MVC](https://github.com/hugnt/NashTech-R2E-Assignments/tree/unit_test/Assignment04-05-MVC)
+		 <br>- Quick access: [Here](https://github.com/hugnt/NashTech-R2E-Assignments/tree/unit_test/Assignment04-05-MVC)
  - **Content**: 
 	-	***Requirement*** 
-		-	Create Unit Tests for the actions of RookiesController 
-		-	Create Unit Tests for all business method which used in the above controller
+		 <br>-	Create Unit Tests for the actions of RookiesController 
+		 <br>-	Create Unit Tests for all business method which used in the above controller
 	-	***Objectives:*** The unit test must be covered at least 70% line of code that we had implemented for controller and business
 	-	***Implementation:*** 
-		-	All Test cases is located in `Assignment04-05-MVC.Tests` project
-		-	***GlobalTestData:*** contains these data that can be mocked into repository
-		-	***Services > PersonServicesTest:***
+		 <br>-	All Test cases is located in `Assignment04-05-MVC.Tests` project
+		 <br>-	***GlobalTestData:*** contains these data that can be mocked into repository
+		 <br>-	***Services > PersonServicesTest:***
 			-	File .cs: AddTests, DeteleTests, GetByFilterTests, ... represent for each method in PersonService
 			-	TestData: contains these data that used to test for specific method in PersonService
 			-	ExpectedResultModel: contains these class may TestData need to using (for clear coding)
-		- ***Controllers >  RookiesControllerTests:***
+		 <br>- ***Controllers >  RookiesControllerTests:***
 			-  TestData: contains these data that used to test for specific method in RookiesController
 			- File .cs: AddNewTests, DeteleTests, DetailsTests, ... represent for each method in RookiesController
-		- 	***Repositories> PersonRepositoryTests:***
+		 <br>- 	***Repositories> PersonRepositoryTests:***
 			-	File .cs: AddTests, RemoveTests, GetaAllQueryAble, ... represent for each method in PersonRepository
 	-	***What did I do?***	
-			-	Using XUnit 
-			-	Add validation for Person using Fluent Validation
-			-	Writing test case for all method in PersonService:
-			-	Writing test case for all method in RookiesController
-			-	Writing test case for all method in PersonRepository
-			-	Apply Fluent Insertion for all test case
-			-	Apply [Fact] & [Theory]
-			-	Mocking data for Repository (in PersonService) and Service (in RookiesController)
+			 <br>-	Using XUnit 
+			 <br>-	Add validation for Person using Fluent Validation
+			 <br>-	Writing test case for all method in PersonService:
+			 <br>-	Writing test case for all method in RookiesController
+			 <br>-	Writing test case for all method in PersonRepository
+			 <br>-	Apply Fluent Insertion for all test case
+			 <br>-	Apply [Fact] & [Theory]
+			 <br>-	Mocking data for Repository (in PersonService) and Service (in RookiesController)
  - **Step by step**:
 	-	Clone:  https://github.com/hugnt/NashTech-R2E-Assignments/tree/unit_test/Assignment04-05-MVC
 	-	***To Run Test Case:***
-		-	Open solution (.sln file) by Visual Studio
-		-	Open `Test` tab then click `Run All Tests`
+		 <br>-	Open solution (.sln file) by Visual Studio
+		 <br>-	Open `Test` tab then click `Run All Tests`
 	- ***To See Code Coverage:***
-		- Install extension FCC (Fine Code Coverage)
-		- Open View > Other Window > Fine Code Coverage to see the FCC window
-		- Run All Test Case again: then see FCC window
+		 <br>- Install extension FCC (Fine Code Coverage)
+		 <br>- Open View > Other Window > Fine Code Coverage to see the FCC window
+		 <br>- Run All Test Case again: then see FCC window
 	- ***To Run Application***: 
-		- Open solution (.sln file) by Visual Studio and click Run ▶️ button 
+		 <br>- Open solution (.sln file) by Visual Studio and click Run ▶️ button 
+
