@@ -6,20 +6,20 @@
 		 <br>- Quick access: [Here](https://github.com/hugnt/NashTech-R2E-Assignments/tree/unit_test/Assignment04-05-MVC)
  - **Content**: 
 	-	***Requirement*** 
-		 <br>-	Create Unit Tests for the actions of RookiesController 
-		 <br>-	Create Unit Tests for all business method which used in the above controller
+		-	Create Unit Tests for the actions of RookiesController 
+		-	Create Unit Tests for all business method which used in the above controller
 	-	***Objectives:*** The unit test must be covered at least 70% line of code that we had implemented for controller and business
 	-	***Implementation:*** 
-		 <br>-	All Test cases is located in `Assignment04-05-MVC.Tests` project
-		 <br>-	***GlobalTestData:*** contains these data that can be mocked into repository
-		 <br>-	***Services > PersonServicesTest:***
+		-	All Test cases is located in `Assignment04-05-MVC.Tests` project
+		-	***GlobalTestData:*** contains these data that can be mocked into repository
+		-	***Services > PersonServicesTest:***
 			-	File .cs: AddTests, DeteleTests, GetByFilterTests, ... represent for each method in PersonService
 			-	TestData: contains these data that used to test for specific method in PersonService
 			-	ExpectedResultModel: contains these class may TestData need to using (for clear coding)
-		 <br>- ***Controllers >  RookiesControllerTests:***
+		- ***Controllers >  RookiesControllerTests:***
 			-  TestData: contains these data that used to test for specific method in RookiesController
 			- File .cs: AddNewTests, DeteleTests, DetailsTests, ... represent for each method in RookiesController
-		 <br>- 	***Repositories> PersonRepositoryTests:***
+		- 	***Repositories> PersonRepositoryTests:***
 			-	File .cs: AddTests, RemoveTests, GetaAllQueryAble, ... represent for each method in PersonRepository
 	-	***What did I do?***	
 			 <br>-	Using XUnit 
@@ -33,12 +33,12 @@
  - **Step by step**:
 	-	Clone:  https://github.com/hugnt/NashTech-R2E-Assignments/tree/unit_test/Assignment04-05-MVC
 	-	***To Run Test Case:***
-		 <br>-	Open solution (.sln file) by Visual Studio
-		 <br>-	Open `Test` tab then click `Run All Tests`
+		-	Open solution (.sln file) by Visual Studio
+		-	Open `Test` tab then click `Run All Tests`
 	- ***To See Code Coverage:***
-		 <br>- Install extension FCC (Fine Code Coverage)
-		 <br>- Open View > Other Window > Fine Code Coverage to see the FCC window
-		 <br>- Run All Test Case again: then see FCC window
+		- Install extension FCC (Fine Code Coverage)
+		- Open View > Other Window > Fine Code Coverage to see the FCC window
+		- Run All Test Case again: then see FCC window
 	- ***To Run Application***: 
-		 <br>- Open solution (.sln file) by Visual Studio and click Run ▶️ button 
+		- Open solution (.sln file) by Visual Studio and click Run ▶️ button 
 
