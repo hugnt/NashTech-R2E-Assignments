@@ -54,7 +54,8 @@ Here is the instructions about running the assignments code in R2E program in Na
 	5. Action to return the excel file that contains dummy data of list persons 
 	6. Define the new Route that to include “NashTech” before controller then action. For examp
  5. **Step by step**:
-		 - Clone:  https://github.com/hugnt/NashTech-R2E-Assignments/tree/main/Assignment04-05-MVC
+		 -	Clone:  https://github.com/hugnt/NashTech-R2E-Assignments/tree/main
+		- 	Then access folder: `Assignment04-05-MVC`
 		 - Open solution (.sln file) by Visual Studio and click Run ▶️ button 
 
 #### b) Assignment 2
@@ -172,9 +173,9 @@ In this assignment, Rookies will need to implement a “Person” service that c
 ## 6) Unit test ✅
 
 - **Position**: 
-		- Branch: [unit_test](https://github.com/hugnt/NashTech-R2E-Assignments/tree/unit_test)
-		- Folder: [Assignment04-05-MVC](https://github.com/hugnt/NashTech-R2E-Assignments/tree/unit_test/Assignment04-05-MVC)
-		- Quick access: [Here](https://github.com/hugnt/NashTech-R2E-Assignments/tree/unit_test/Assignment04-05-MVC)
+		 <br>- Branch: [unit_test](https://github.com/hugnt/NashTech-R2E-Assignments/tree/unit_test)
+		 <br>- Folder: [Assignment04-05-MVC](https://github.com/hugnt/NashTech-R2E-Assignments/tree/unit_test/Assignment04-05-MVC)
+		 <br>- Quick access: [Here](https://github.com/hugnt/NashTech-R2E-Assignments/tree/unit_test/Assignment04-05-MVC)
  - **Content**: 
 	-	***Requirement*** 
 		-	Create Unit Tests for the actions of RookiesController 
@@ -193,16 +194,19 @@ In this assignment, Rookies will need to implement a “Person” service that c
 		- 	***Repositories> PersonRepositoryTests:***
 			-	File .cs: AddTests, RemoveTests, GetaAllQueryAble, ... represent for each method in PersonRepository
 	-	***What did I do?***	
-			-	Using XUnit 
-			-	Add validation for Person using Fluent Validation
-			-	Writing test case for all method in PersonService:
-			-	Writing test case for all method in RookiesController
-			-	Writing test case for all method in PersonRepository
-			-	Apply Fluent Insertion for all test case
-			-	Apply [Fact] & [Theory]
-			-	Mocking data for Repository (in PersonService) and Service (in RookiesController)
+			 <br>-	Using XUnit 
+			 <br>-	Add validation for Person using Fluent Validation
+			 <br>-	Writing test case for all method in PersonService:
+			 <br>-	Writing test case for all method in RookiesController
+			 <br>-	Writing test case for all method in PersonRepository
+			 <br>-	Apply Fluent Insertion for all test case
+			 <br>-	Apply [Fact] & [Theory]
+			 <br>-	Mocking data for Repository (in PersonService) and Service (in RookiesController)
  - **Step by step**:
-	-	Clone:  https://github.com/hugnt/NashTech-R2E-Assignments/tree/unit_test/Assignment04-05-MVC
+	-	Clone:  https://github.com/hugnt/NashTech-R2E-Assignments/tree/main
+	- 	Then change to branch: `unit_test`
+	- 	Then access folder: `Assignment04-05-MVC`
+	- 	(or clone directly to branch by command: git clone --branch unit_test --single-branch https://github.com/hugnt/NashTech-R2E-Assignments.git)
 	-	***To Run Test Case:***
 		-	Open solution (.sln file) by Visual Studio
 		-	Open `Test` tab then click `Run All Tests`
@@ -212,6 +216,8 @@ In this assignment, Rookies will need to implement a “Person” service that c
 		- Run All Test Case again: then see FCC window
 	- ***To Run Application***: 
 		- Open solution (.sln file) by Visual Studio and click Run ▶️ button 
+
+
 
 
 ## 7) ReactJS

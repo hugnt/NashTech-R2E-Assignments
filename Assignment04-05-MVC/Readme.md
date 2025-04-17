@@ -34,6 +34,7 @@
 	-	Clone:  https://github.com/hugnt/NashTech-R2E-Assignments/tree/main
 	- 	Then change to branch: `unit_test`
 	- 	Then access folder: `Assignment04-05-MVC`
+	- 	(or clone directly to branch by command: git clone --branch unit_test --single-branch https://github.com/hugnt/NashTech-R2E-Assignments.git)
 	-	***To Run Test Case:***
 		-	Open solution (.sln file) by Visual Studio
 		-	Open `Test` tab then click `Run All Tests`
