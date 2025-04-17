@@ -31,7 +31,9 @@
 			 <br>-	Apply [Fact] & [Theory]
 			 <br>-	Mocking data for Repository (in PersonService) and Service (in RookiesController)
  - **Step by step**:
-	-	Clone:  https://github.com/hugnt/NashTech-R2E-Assignments/tree/unit_test/Assignment04-05-MVC
+	-	Clone:  https://github.com/hugnt/NashTech-R2E-Assignments/tree/main
+	- 	Then change to branch: `unit_test`
+	- 	Then access folder: `Assignment04-05-MVC`
 	-	***To Run Test Case:***
 		-	Open solution (.sln file) by Visual Studio
 		-	Open `Test` tab then click `Run All Tests`
